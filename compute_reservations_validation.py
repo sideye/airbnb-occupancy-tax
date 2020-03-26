@@ -41,5 +41,25 @@ for index, m in enumerate(months[1:]):
     results = get_booked_listings(period, prev_listings_path, prev_calendar_path, post_listings_path, post_calendar_path)
     reservations = pd.concat([reservations, results], ignore_index = True)
 
+
+# Determine listings with 100+ nights available
+good_listings = set()
+months = ["jan_2019", "feb_2019", "mar_2019", "apr_2019", "may_2019", "jun_2019", "jul_2019", "aug_2019", "sep_2019", "oct_2019", "nov_2019", "dec_2019"]
+for m in months:
+    listings = pd.read_csv(path + m + "_listings.csv")
+    for id, avail in zip(listings.id, listings.availability_365):
+        if avail >= 100:
+            good_listings.add(id)
+    print(len(good_listings))
+reservations = reservations[reservations.id.isin(good_listings)]
+
+# Only consider listings in both pre and post
+jun = pd.read_csv(path + "jun_2019_listings.csv")
+jul = pd.read_csv(path + "jul_2019_listings.csv")
+jun_listings = set(jun.id)
+jul_listings = set(jul.id)
+in_both_pre_post = jun_listings.intersection(jul_listings)
+reservations = reservations[reservations.id.isin(in_both_pre_post)]
+
 reservations = reservations.sort_values(["id", "date"], ascending = True)
 reservations.to_csv(output_path, index=False)
