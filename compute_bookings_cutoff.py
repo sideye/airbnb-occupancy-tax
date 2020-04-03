@@ -52,5 +52,13 @@ for m in months:
     print(len(good_listings))
 reservations = reservations[reservations.id.isin(good_listings)]
 
+# Only consider listings in both pre and post
+dec = pd.read_csv(path + "dec_2018_listings.csv")
+jan = pd.read_csv(path + "jan_2019_listings.csv")
+dec_listings = set(dec.id)
+jan_listings = set(jan.id)
+in_both_pre_post = dec_listings.intersection(jan_listings)
+reservations = reservations[reservations.id.isin(in_both_pre_post)]
+
 reservations = reservations.sort_values(["id", "date"], ascending = True)
 reservations.to_csv(output_path, index=False)

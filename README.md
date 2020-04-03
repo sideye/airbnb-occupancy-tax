@@ -18,6 +18,14 @@
     - This indicates that validation by reviews is not a very 'clean' predictor of imputed nights, making it a poor validator.
     - However, if we follow through with the month level aggregation that yields a higher correlation, we do find that our imputed transactions are within ballpark figures of estimated nights based on reviews. The regression returns a slope of 4 (imputed nights per review), so that assuming an average of 3 nights per stay  / 70% review rate per stay = ~4.3 nights per review.
 
+### March 27th
+- Amend data processing to restrict analysis to listings that are booked for >14 nights a year, since only these listings are affected by the tax. 
+- Scrape data for cities: Montreal, Rhode Island, Washington DC, Quebec City
+
+### April 2nd
+- Scrape data for cities: Nashville, San Francisco, Chicago, 
+- Collect tax data (rates and enactment date) on control units, see `control_cities.xlsx`
+
 ## TODO
 - Determine causal method used: e.g. Differences in Differences, Synthetic controls, etc,.
 - Determine counterfactual city/cities (this depends on method used)
