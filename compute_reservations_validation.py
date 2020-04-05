@@ -62,4 +62,19 @@ in_both_pre_post = jun_listings.intersection(jul_listings)
 reservations = reservations[reservations.id.isin(in_both_pre_post)]
 
 reservations = reservations.sort_values(["id", "date"], ascending = True)
+
+
+# Remove cancellations from analysis
+reservations = reservations.groupby(['id', 'date']).last().reset_index()
+
+# Remove listings with 2+ 30+ night months
+reservations['month'] = reservations.date.dt.month
+over_occupancy = reservations.groupby(['id', 'month']).count().reset_index().rename({'name_prev': 'nights'}, axis = 1)
+def drop_over(df):
+    if sum(df.date >= 30) >= 2:
+        return False
+    return True
+over_occupancy = set(over_occupancy.groupby('id').filter(drop_over).id)
+reservations = reservations[reservations.id.isin(over_occupancy)]
+
 reservations.to_csv(output_path, index=False)

@@ -23,10 +23,14 @@
 - Scrape data for cities: Montreal, Rhode Island, Washington DC, Quebec City
 
 ### April 2nd
-- Scrape data for cities: Nashville, San Francisco, Chicago, 
+- Scrape data for cities: Nashville, San Francisco, Chicago, Twin Cities, Denver, and Asheville
 - Collect tax data (rates and enactment date) on control units, see `control_cities.xlsx`
+- Add preliminary EDA notebook
+
+### April 4th
+- Fix code to address cancellations/double bookings. 
+- Filter out all listings with 2+ months of 30+ days booked, since we suspect these listings to have had their dates altered by the host.
+- Complete panel data analysis of imputed nights on reviews per month per listing. Overall, there is a statistically significant relationship around 0.5 reviews per night, which is reasonable.
 
 ## TODO
-- Determine causal method used: e.g. Differences in Differences, Synthetic controls, etc,.
-- Determine counterfactual city/cities (this depends on method used)
 - Determine how to best standardize data due to uneven time differences in observation time across units 
