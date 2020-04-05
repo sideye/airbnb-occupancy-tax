@@ -33,4 +33,6 @@
 - Complete panel data analysis of imputed nights on reviews per month per listing. Overall, there is a statistically significant relationship around 0.5 reviews per night, which is reasonable.
 
 ## TODO
+- Reprocess all data with the new updates to data cleaning/filtering
+- Implement SCM method
 - Determine how to best standardize data due to uneven time differences in observation time across units 
