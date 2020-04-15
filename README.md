@@ -40,6 +40,7 @@
 - Fix bug in code for date booked CSVs that recorded NaNs in reservation periods.
 - Implement SCM for date booked.
 - Complete brief deck on preliminary SCM results.
+- Add exits and entries outcome analysis.
 
 
 ## TODO
