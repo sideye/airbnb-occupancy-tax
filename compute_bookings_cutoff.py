@@ -25,7 +25,7 @@ def get_booked_listings(period, prev_listings_path, prev_calendar_path, post_lis
     
     merged = prev.merge(post, on = ["id", "date"], suffixes = ["_prev", "_post"])
     booking_changes = merged[(merged.available_prev == 't') & (merged.available_post == 'f')]
-    booking_changes['reservation_period'] = pd.Series(period).repeat(booking_changes.shape[0]).reset_index(drop=True)
+    booking_changes['reservation_period'] = period
     return booking_changes
     
 path = sys.argv[1]

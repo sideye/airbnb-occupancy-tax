@@ -32,6 +32,16 @@
 - Filter out all listings with 2+ months of 30+ days booked, since we suspect these listings to have had their dates altered by the host.
 - Complete panel data analysis of imputed nights on reviews per month per listing. Overall, there is a statistically significant relationship around 0.5 reviews per night, which is reasonable.
 
+### April 12th
+- Aggregate data for reservation dates by week, bimonth, and month for reservation date and by month for date booked.
+- Implement SCM for reservation date on the 3 levels.
+
+### April 13th
+- Fix bug in code for date booked CSVs that recorded NaNs in reservation periods.
+- Implement SCM for date booked.
+- Complete brief deck on preliminary SCM results.
+
+
 ## TODO
 - Reprocess all data with the new updates to data cleaning/filtering
 - Implement SCM method
